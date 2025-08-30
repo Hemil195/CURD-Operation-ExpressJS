@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Details</th>
+            <th>Price</th>
+            <th>Action</th>
+        </tr>
+        <% for(var i=0;i<myData.length;i++) { %>
+            <tr>
+                <td>
+                    <%= i+1 %>
+                </td>
+                <td><%= myData[i].pname %></td>
+                <td><%= myData[i].pdetails %></td>
+                <td><%= myData[i].pprice %></td>
+                <td>
+                    <a href="/edit-product/<%= myData[i]._id %>">Edit</a>
+                    <a href="/delete-product/<%= myData[i]._id %>">Delete</a></td>
+                </td>
+            </tr>
+            <% }%>
+    </table>
+</body>
+</html>
+    
