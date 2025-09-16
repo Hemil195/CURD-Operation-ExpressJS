@@ -72,4 +72,30 @@ router.post('/file-upload', function(req, res, next) {
   })
 });
 
+router.get('/login', function(req, res, next) {
+  res.render('login');
+});
+
+router.post('/login', function(req, res, next) {
+  var a = req.body.text1;
+  req.session.uname = a;
+  res.redirect('/dashboard');
+});
+
+router.get('/dashboard', function(req, res, next) {
+  if(req.session.uname){
+    var a = req.session.uname;
+    res.render('dashboard',{mya : a});
+  }
+  else{
+    res.redirect('/login');
+  }
+});
+
+router.get('/logout', function(req, res, next) {
+  req.session.destroy(function(){
+    res.redirect('/login');
+  })
+});
+
 module.exports = router;
